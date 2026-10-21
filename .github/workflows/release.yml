@@ -91,6 +91,25 @@ jobs:
       - run: npm run build
       - run: npx cap add android
       - run: npx cap sync android
+      - name: Apply CreatorKit launcher icon
+        run: |
+          python3 -m pip install --quiet pillow cairosvg
+          python3 - <<'PY'
+          from pathlib import Path
+          from io import BytesIO
+          import cairosvg
+          from PIL import Image
+          svg = Path("public/creatorkit-mark.svg").read_bytes()
+          base = Image.open(BytesIO(cairosvg.svg2png(bytestring=svg, output_width=512, output_height=512))).convert("RGBA")
+          res = Path("android/app/src/main/res")
+          for folder, size in [("mipmap-mdpi",48),("mipmap-hdpi",72),("mipmap-xhdpi",96),("mipmap-xxhdpi",144),("mipmap-xxxhdpi",192)]:
+              dest = res / folder
+              dest.mkdir(parents=True, exist_ok=True)
+              icon = base.resize((size,size), Image.Resampling.LANCZOS)
+              icon.save(dest / "ic_launcher.png")
+              icon.save(dest / "ic_launcher_round.png")
+          print("Applied CreatorKit custom launcher icon to Android mipmap resources.")
+          PY
       - name: Configure Android compatibility
         run: |
           python3 - <<'PY'
