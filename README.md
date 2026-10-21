@@ -35,7 +35,7 @@ Run `scripts\build-all.bat` on Windows for the interactive build menu. See [Mult
 - **iOS IPA:** requires macOS, Xcode, Apple signing credentials and provisioning. Windows cannot run Xcode or natively sign iOS builds.
 - **Linux:** run `npm run desktop:linux` on Linux.
 
-The GitHub Actions workflow is in [build-desktop.yml](.github/workflows/build-desktop.yml); its artifacts are available in the Actions run after a successful build.
+The GitHub Actions workflow for cross-platform packaging is in [release.yml](.github/workflows/release.yml); release steps and platform limitations are documented in [docs/RELEASES.md](docs/RELEASES.md). Push a version tag such as `v0.1.0` to trigger a release build.
 
 ## Data and privacy
 In this repository version, idea records are stored in the current browser profile on the current device. Export backups regularly; clearing browser storage can erase local records. There is no YouTube API integration or real payment backend configured in this repository version. Do not present manual counts as automatically synced YouTube analytics.
