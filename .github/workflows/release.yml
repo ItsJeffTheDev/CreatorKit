@@ -100,7 +100,7 @@ jobs:
           test -s "$APK"
           "$ANDROID_HOME/build-tools/35.0.0/apksigner" verify "$APK"
           "$ANDROID_HOME/build-tools/35.0.0/aapt" dump badging "$APK" | tee ../apk-badging.txt
-          grep -q "package: name=\x27net.creatorkit.app\x27" ../apk-badging.txt
+          grep -Fq "package: name='net.creatorkit.app'" ../apk-badging.txt
           cp "$APK" ../CreatorKit-Android.apk
       - uses: actions/upload-artifact@v4
         with:
