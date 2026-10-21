@@ -73,8 +73,8 @@ jobs:
           java-version: "21"
       - uses: android-actions/setup-android@v3
       - run: npm install
-      - run: npx cap add android
       - run: npm run build
+      - run: npx cap add android
       - run: npx cap sync android
       - run: chmod +x android/gradlew && cd android && ./gradlew assembleDebug
       - uses: actions/upload-artifact@v4
@@ -92,8 +92,8 @@ jobs:
         with:
           node-version: 22
       - run: npm install
-      - run: npx cap add ios
       - run: npm run build
+      - run: npx cap add ios
       - run: npx cap sync ios
       - name: Compile iOS simulator app
         run: xcodebuild -workspace ios/App/App.xcworkspace -scheme App -sdk iphonesimulator -configuration Release -derivedDataPath build/ios CODE_SIGNING_ALLOWED=NO
