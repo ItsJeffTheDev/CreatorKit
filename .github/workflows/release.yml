@@ -146,6 +146,8 @@ jobs:
           This release pipeline packages the current repository implementation. Features requiring YouTube API access, cloud sync, accounts, or payments are not configured in this source baseline. Test before relying on it.
           EOF
       - uses: softprops/action-gh-release@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tag_name: ${{ startsWith(github.ref, 'refs/tags/') && github.ref_name || format('nightly-{0}', github.run_number) }}
           name: ${{ startsWith(github.ref, 'refs/tags/') && format('CreatorKit {0}', github.ref_name) || format('CreatorKit Nightly {0}', github.run_number) }}
