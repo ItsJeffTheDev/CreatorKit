@@ -10,9 +10,9 @@
     "preview": "vite preview",
     "android:sync": "npm run build && cap sync android",
     "android:apk": "npm run android:sync && cd android && gradlew assembleDebug",
-    "desktop:win": "npm run build && electron-builder --win nsis",
-    "desktop:mac": "npm run build && electron-builder --mac dmg zip",
-    "desktop:linux": "npm run build && electron-builder --linux AppImage deb"
+    "desktop:win": "npm run build && electron-builder --win nsis --publish never",
+    "desktop:mac": "npm run build && electron-builder --mac dmg zip --publish never",
+    "desktop:linux": "npm run build && electron-builder --linux AppImage deb --publish never"
   },
   "dependencies": {
     "@capacitor/android": "^7.4.3",
@@ -69,5 +69,9 @@
       "oneClick": false,
       "allowToChangeInstallationDirectory": true
     }
+  },
+  "author": {
+    "name": "Its Jeff The Dev",
+    "email": "chickenradios@gmail.com"
   }
 }
