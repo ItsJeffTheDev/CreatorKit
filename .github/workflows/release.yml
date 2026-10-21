@@ -44,15 +44,19 @@ jobs:
           - os: windows-latest
             target: Windows
             command: npm run desktop:win
-            path: "dist-desktop/*"
+            path: "dist-desktop/*.exe"
           - os: macos-latest
             target: macOS
             command: npm run desktop:mac
-            path: "dist-desktop/*"
+            path: |
+              dist-desktop/*.dmg
+              dist-desktop/*-mac.zip
           - os: ubuntu-latest
             target: Linux
             command: npm run desktop:linux
-            path: "dist-desktop/*"
+            path: |
+              dist-desktop/*.AppImage
+              dist-desktop/*.deb
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
@@ -87,11 +91,21 @@ jobs:
       - run: npm run build
       - run: npx cap add android
       - run: npx cap sync android
-      - run: chmod +x android/gradlew && cd android && ./gradlew assembleDebug
+      - name: Build and verify installable universal debug APK
+        run: |
+          chmod +x android/gradlew
+          cd android
+          ./gradlew --no-daemon clean assembleDebug
+          APK="app/build/outputs/apk/debug/app-debug.apk"
+          test -s "$APK"
+          "$ANDROID_HOME/build-tools/35.0.0/apksigner" verify "$APK"
+          "$ANDROID_HOME/build-tools/35.0.0/aapt" dump badging "$APK" | tee ../apk-badging.txt
+          grep -q "package: name=\x27net.creatorkit.app\x27" ../apk-badging.txt
+          cp "$APK" ../CreatorKit-Android.apk
       - uses: actions/upload-artifact@v4
         with:
-          name: CreatorKit-Android-debug
-          path: android/app/build/outputs/apk/debug/*.apk
+          name: CreatorKit-Android
+          path: CreatorKit-Android.apk
           if-no-files-found: error
 
   ios-simulator:
