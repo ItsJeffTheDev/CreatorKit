@@ -2,8 +2,16 @@ name: Build CreatorKit release
 
 on:
   push:
+    branches: [main]
     tags:
       - "v*"
+    paths:
+      - "src/**"
+      - "electron/**"
+      - "package.json"
+      - "vite.config.ts"
+      - "capacitor.config.ts"
+      - ".github/workflows/release.yml"
   workflow_dispatch:
 
 permissions:
@@ -110,7 +118,7 @@ jobs:
 
   release:
     name: Publish GitHub release
-    if: startsWith(github.ref, 'refs/tags/v')
+    if: startsWith(github.ref, 'refs/tags/v') || github.ref == 'refs/heads/main'
     needs: [web, desktop, android, ios-simulator]
     runs-on: ubuntu-latest
     steps:
@@ -136,7 +144,8 @@ jobs:
           EOF
       - uses: softprops/action-gh-release@v2
         with:
-          name: CreatorKit ${{ github.ref_name }}
+          tag_name: ${{ startsWith(github.ref, 'refs/tags/') && github.ref_name || format('nightly-{0}', github.run_number) }}
+          name: ${{ startsWith(github.ref, 'refs/tags/') && format('CreatorKit {0}', github.ref_name) || format('CreatorKit Nightly {0}', github.run_number) }}
           body_path: release-notes.md
           files: release-assets/**/*
           draft: false
