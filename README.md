@@ -4,6 +4,8 @@ CreatorKit is a creator planning workspace with a YouTube-inspired red, black, a
 
 **Live AppDeploy version:** https://creatorkit-tsuasd.v2.appdeploy.ai/
 
+The UI uses a YouTube-inspired red, black, and white palette, the custom CreatorKit play mark, responsive icon styling, and reduced-motion-aware transitions. A wide SVG banner is available at `public/creator-banner.svg`.
+
 ## Current repository app
 - Empty-by-default idea workspace; no seeded/sample creator records
 - Add, search, and delete ideas; set content format, notes, target date, and published status
