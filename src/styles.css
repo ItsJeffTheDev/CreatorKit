@@ -59,3 +59,7 @@
 .welcome,.stats,.sectionHead,.empty,.list,.search{animation:ck-rise .38s ease both}
 .stats{animation-delay:.04s}.sectionHead{animation-delay:.07s}.empty,.list{animation-delay:.1s}
 @media(prefers-reduced-motion:reduce){.welcome,.stats,.sectionHead,.empty,.list,.search{animation:none!important}.nav:hover,.idea:hover{transform:none}}
+
+/* Settings screen and safe workspace controls */
+.settings-page{display:grid;gap:14px}.setting-card{border:1px solid var(--line);background:linear-gradient(140deg,#17191e,#101114);border-radius:14px;padding:20px}.setting-card h3{display:flex;align-items:center;gap:9px;font:700 15px Manrope;margin:0;color:#f7f7f9}.setting-card h3 svg{color:#ff526b}.setting-card p{font-size:12px;max-width:680px}.setting-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}.upload-label{display:inline-flex;align-items:center;gap:8px;position:relative;overflow:hidden;cursor:pointer}.upload-label input{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:pointer}.danger{display:inline-flex;align-items:center;gap:8px;border:1px solid #773040;background:#32131b;color:#ff9aaa;padding:10px 14px;border-radius:9px;font-size:12px;font-weight:700}.danger:hover{background:#491622;border-color:#ff526b}
+@media(max-width:760px){.settings-page .setting-card{padding:16px}.setting-actions{display:grid;grid-template-columns:1fr}.setting-actions>*{width:100%;justify-content:center}}
