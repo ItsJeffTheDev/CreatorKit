@@ -46,3 +46,16 @@ In this repository version, idea records are stored in the current browser profi
 
 ## Release status
 This is an initial source baseline, not a claim that the app is store-ready. Before public release, run a clean install/build and test each target, verify data isolation, configure a privacy policy and support contact, choose the final package ID, configure platform signing, and satisfy each store's current policies. Digital subscription payments need a real server-verified billing implementation. Never commit signing keys, passwords, or API secrets.
+
+## CreatorKit Pro tools
+The repository includes a Creator tools workspace with browser-based helpers for:
+- Five video title starting points
+- Hook / opening-line builder with selectable tone
+- Video description and chapter outline
+- Hashtag organizer based on your topic and keywords
+- Thumbnail design brief
+- Repurposing plan for a long video, Shorts, and community posts
+
+These are editable, rule-based drafts generated locally; they are not AI research, live trend data, or a YouTube integration. Review claims and details before publishing. See [Pro creator tools documentation](docs/PRO_CREATOR_TOOLS.md).
+
+The live AppDeploy build has its own deployed source snapshot. This GitHub repository version remains a separate source/build project; its subscription UI does not independently verify Pro entitlement or activate subscription access. Verify the Stripe Payment Link's trial and billing terms in Stripe.
