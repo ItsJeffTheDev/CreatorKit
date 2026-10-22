@@ -9,7 +9,7 @@
 3. Open the repository's **Actions** tab and watch **Build CreatorKit release**.
 4. If all build jobs pass, the workflow publishes a prerelease with platform assets.
 
-A manual run from Actions validates/builds artifacts but does not publish a GitHub Release; publishing is tag-triggered.
+You can also open **Actions → Build CreatorKit release → Run workflow** to create a nightly pre-release, or enter a version tag such as `v0.1.1` in the optional input. A version tag pushed to `main` creates a versioned release automatically.
 
 ## Artifacts
 
