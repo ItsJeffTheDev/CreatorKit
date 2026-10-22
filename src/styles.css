@@ -36,3 +36,26 @@
 .welcome,.stats,.sectionHead,.empty,.list,.search{animation:ck-rise .38s ease both}
 .stats{animation-delay:.04s}.sectionHead{animation-delay:.07s}.empty,.list{animation-delay:.1s}
 @media(prefers-reduced-motion:reduce){.welcome,.stats,.sectionHead,.empty,.list,.search{animation:none!important}.nav:hover,.idea:hover{transform:none}}
+
+/* UI polish: red creator accent and subtle motion */
+:root{--green:#ff405f}
+.local::first-letter{color:#ff405f}
+.brandIcon{background:linear-gradient(145deg,#ff3154,#c9002b);border:1px solid #ff7183;box-shadow:0 6px 24px #ff00332e}
+.brandIcon svg{width:27px;height:27px}
+.nav{transition:background .2s ease,border-color .2s ease,transform .2s ease,color .2s ease}
+.nav:hover{transform:translateX(2px);background:#211116;border-color:#49202a}
+.nav.active{background:linear-gradient(100deg,#ff0033 0%,#60111e 100%);border-color:#ff4b625c;box-shadow:inset 3px 0 #ff8090,0 7px 24px #ff00331a}
+.primary{background:linear-gradient(135deg,#ff284b,#e6002e);border-color:#ff3657;box-shadow:0 7px 20px #ff003322}
+.primary:hover{background:linear-gradient(135deg,#ff4663,#f00030);box-shadow:0 9px 25px #ff00333b}
+.stats>div{position:relative;overflow:hidden}
+.stats>div::after{content:"";position:absolute;right:-24px;top:-30px;width:90px;height:90px;border:1px solid #ff315421;border-radius:50%;pointer-events:none}
+.ideaIcon{background:#30131b!important;color:#ff6a83!important;border:1px solid #52202b}
+.emptyIcon{background:#30131b!important;color:#ff6680!important;border:1px solid #52202b}
+.idea{transition:transform .2s ease,border-color .2s ease,background .2s ease}
+.idea:hover{transform:translateY(-2px);border-color:#6a2736;background:#171216}
+.icon{transition:transform .16s ease,border-color .16s ease,background .16s ease,color .16s ease}
+.icon:hover{background:#30131b;border-color:#ff405f;color:#fff}
+@keyframes ck-rise{from{opacity:0;transform:translateY(9px)}to{opacity:1;transform:translateY(0)}}
+.welcome,.stats,.sectionHead,.empty,.list,.search{animation:ck-rise .38s ease both}
+.stats{animation-delay:.04s}.sectionHead{animation-delay:.07s}.empty,.list{animation-delay:.1s}
+@media(prefers-reduced-motion:reduce){.welcome,.stats,.sectionHead,.empty,.list,.search{animation:none!important}.nav:hover,.idea:hover{transform:none}}
