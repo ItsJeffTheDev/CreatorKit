@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import { Copy, Download, FileText, Image, Lightbulb, RefreshCw, Scissors, Tags, Type, WandSparkles, Check, BookmarkPlus, Trash2 } from "lucide-react";
+import { Copy, Download, FileText, Image, Lightbulb, Scissors, Tags, Type, WandSparkles, Check, BookmarkPlus, Trash2 } from "lucide-react";
 
 type DraftPack = {
   id: string;
@@ -55,12 +55,17 @@ export default function ProTools() {
       subject + ": What Actually Matters",
       "Before You Try " + subject + ", Watch This"
     ];
-    const hooks = [
-      "Most people approach " + safeSubject + " the hard way. Let me show you a simpler starting point.",
-      "If you're " + target + ", this is what I would learn first about " + safeSubject + ".",
-      "I wanted to understand " + safeSubject + ", so let's break down what works, what doesn't, and why.",
-      "By the end, you'll have a practical next step for " + safeSubject + "—without the unnecessary jargon."
-    ];
+    const hooks = tone === "Energetic and playful"
+      ? ["Okay, let's make " + safeSubject + " less confusing.", "I tested a few ways to approach " + safeSubject + "; here's the useful part.", "Quick challenge: can we make " + safeSubject + " easier?", "Let's skip the fluff and get straight into " + safeSubject + "."]
+      : tone === "Calm and educational"
+      ? ["Let's take " + safeSubject + " one step at a time.", "Here's a clear starting point for " + safeSubject + ".", "We'll break " + safeSubject + " into a few practical pieces.", "By the end, you'll understand the key idea behind " + safeSubject + "."]
+      : tone === "Direct and practical"
+      ? ["Here's what you need to know before you start " + safeSubject + ".", "Let's solve one practical problem with " + safeSubject + ".", "These are the steps I'd focus on first for " + safeSubject + ".", "Skip the guesswork: here's a useful way to approach " + safeSubject + "."]
+      : tone === "Story-driven"
+      ? ["I started looking into " + safeSubject + " to find out what actually works.", "Here's what surprised me most while learning " + safeSubject + ".", "I made a few mistakes with " + safeSubject + "; here's what I learned.", "Let me walk you through the story behind " + safeSubject + "."]
+      : tone === "Funny but honest"
+      ? ["I thought " + safeSubject + " would be simple. That was optimistic.", "Let's talk about " + safeSubject + " without pretending it's magic.", "Here's what worked, what flopped, and what I'd do differently with " + safeSubject + ".", "No miracle claims; just a practical look at " + safeSubject + "."]
+      : ["Most people approach " + safeSubject + " the hard way. Let me show you a simpler starting point.", "If you're " + target + ", this is what I would learn first about " + safeSubject + ".", "I wanted to understand " + safeSubject + ", so let's break down what works, what doesn't, and why.", "By the end, you'll have a practical next step for " + safeSubject + " without the unnecessary jargon."];
     const description = subject + "\n\nIn this " + (isShort ? "short video" : "video") + ", we'll explore " + safeSubject + " for " + target + ". The goal: " + goal.toLowerCase() + ".\n\n" +
       (keywordList.length ? "WHAT WE'LL COVER\n" + keywordList.map((x,i) => (i+1) + ". " + x).join("\n") + "\n\n" : "") +
       (isShort ? "Have a question or another tip? Leave it in the comments.\n\n" : "CHAPTERS (replace these with your real timestamps)\n00:00 Introduction\n00:30 The basics\n02:00 Practical example\n03:00 Key takeaways\n\n") +
